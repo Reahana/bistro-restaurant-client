@@ -4,7 +4,7 @@ import { useContext} from 'react';
 import { useLocation, useNavigate} from "react-router-dom";
 import { AuthContext } from "../../providers/AuthProvider";
 // import useAxiosSecure from "../../hooks/useAxiosSecure";
-// import useCart from "../../hooks/useCart";
+ import useCart from "../../hooks/useCart";
 
 
 const FoodCard = ({item}) => {
@@ -14,7 +14,7 @@ const FoodCard = ({item}) => {
      const navigate = useNavigate();
      const location = useLocation();
     // const axiosSecure = useAxiosSecure();
-    // const [, refetch] = useCart();
+     const [, refetch] = useCart();
 
 
     const handleAddToCart = item => {
@@ -31,6 +31,7 @@ const FoodCard = ({item}) => {
             .then(res=>res.json())
             .then (data=>{
                 if (data.insertedId) {
+                    refetch();
                         Swal.fire({
                             position: "top-end",
                             icon: "success",
