@@ -4,6 +4,7 @@ import { useForm } from "react-hook-form";
 import { Link, useNavigate } from "react-router-dom";
 import Swal from 'sweetalert2'
 import { AuthContext } from "../../providers/AuthProvider";
+import SocialLogin from "../../components/SocialLogin/SocialLogin";
 
 
 
@@ -19,17 +20,33 @@ const SignUp = () => {
             .then(result => {
                 const loggedUser = result.user;
                 console.log(loggedUser);
+
                 updateUserProfile(data.name, data.photoURL)
+
                     .then(() => {
-                        console.log('user profile info updated')
-                        reset();
-                        Swal.fire({
-                            position: 'top-end',
-                            icon: 'success',
-                            title: 'User created successfully.',
-                            showConfirmButton: false,
-                            timer: 1500
-                        });
+                        const savedUser = {name: data.name, email: data.email}
+                        fetch(`http://localhost:5000/users`,{
+                            method:'POST',
+                            headers:{
+                                'content-type':'application/json'
+                            },
+                            body:JSON.stringify(savedUser)
+                        })
+                        .then(res=>res.json())
+            .then (data=>{
+                if (data.insertedId) {
+                    reset();
+                    Swal.fire({
+                        position: 'top-end',
+                        icon: 'success',
+                        title: 'User created successfully.',
+                        showConfirmButton: false,
+                        timer: 1500
+                    });
+                }
+            })
+                        //console.log('user profile info updated')
+                       
                         navigate('/');
 
                     })
@@ -94,6 +111,8 @@ const SignUp = () => {
                             </div>
                         </form>
                         <p className="text-center py-3"><small>Already have an account <Link to="/login">Login</Link></small></p>
+                   <SocialLogin></SocialLogin>
+                   
                     </div>
                 </div>
             </div>
