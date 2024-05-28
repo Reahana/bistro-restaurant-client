@@ -47,7 +47,7 @@ const AuthProvider = ({ children }) => {
             if (currentUser) {
                 // get token and store client
                 const userInfo = { email: currentUser.email };
-               axios.post('http://localhost:5000/jwt', userInfo)
+               axios.post('https://bistro-restaurant-server-tau.vercel.app/jwt', userInfo)
                     .then(data => {
                        
                             localStorage.setItem('access-token', data.data.token);

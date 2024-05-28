@@ -11,14 +11,14 @@ const AllUsers = () => {
         queryKey: ['users'],
         queryFn: async () => {
            const res = await axiosSecure.get('/users');
-          // const res = await fetch(`http://localhost:5000/users`)
+          // const res = await fetch(`https://bistro-restaurant-server-tau.vercel.app/users`)
            return res.data;
            // return res.json();
         }
     })
 
     const handleMakeAdmin = user =>{
-        fetch(`http://localhost:5000/users/admin/${user._id}`,{
+        fetch(`https://bistro-restaurant-server-tau.vercel.app/users/admin/${user._id}`,{
             method: 'PATCH'
         })
         .then(res=>res.json())
