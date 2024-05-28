@@ -29,14 +29,12 @@ const SocialLogin = () => {
                 body:JSON.stringify(savedUser)
             })
             .then(res=>res.json())
-            .then (data=>{
-                if (data.insertedId) {
-                   
-                }
+            .then (()=>{
+                navigate(from, { replace: true });
             })
 
 
-            navigate(from, { replace: true });
+            
             // const userInfo = {
             //     email: result.user?.email,
             //     name: result.user?.displayName

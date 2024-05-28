@@ -12,6 +12,7 @@ import Secret from "../pages/Shared/Secret/Secret";
 import SignUp from "../pages/SignUp/SignUp";
 import Dashboard from "../layout/Dashboard";
 import MyCart from "../pages/Dashboard/MyCart/MyCart";
+import AllUsers from "../pages/Dashboard/AllUsers/AllUsers";
 
 const router = createBrowserRouter([
     {
@@ -51,7 +52,11 @@ const router = createBrowserRouter([
         {
           path: 'mycart',
           element: <MyCart></MyCart>
-        }
+        },
+        {
+          path: 'users',
+          element: <AllUsers></AllUsers>
+        },
       ]
     }
   ]);
