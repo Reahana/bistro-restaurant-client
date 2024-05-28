@@ -3,6 +3,7 @@ import { FaTrashAlt } from "react-icons/fa";
 import useCart from "../../../hooks/useCart";
 import Swal from "sweetalert2";
 import { Helmet } from 'react-helmet-async';
+import { Link } from 'react-router-dom';
 // import useAxiosSecure from "../../../hooks/useAxiosSecure";
 
 const MyCart = () => {
@@ -50,7 +51,10 @@ const MyCart = () => {
         <div className="flex justify-evenly mb-8">
             <h2 className="text-4xl">Items: {cart.length}</h2>
             <h2 className="text-4xl">Total Price: {totalPrice}</h2>
-            <button className="btn btn-warning">Pay</button>
+           <Link to='/dashboard/payment'>
+           <button className="btn btn-warning">Pay</button>
+           </Link>
+          
 
         </div>
         <div className="overflow-x-auto">
