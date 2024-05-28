@@ -6,7 +6,7 @@ import { Elements } from "@stripe/react-stripe-js";
 import CheckoutForm from './CheckoutForm';
 
 
-
+//card test number 4242 4242 4242 4242
 const stripePromise = loadStripe(import.meta.env.VITE_PAYMENT_GATEWAY_PK);
 
 const Payment = () => {
